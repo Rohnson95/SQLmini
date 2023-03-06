@@ -49,7 +49,13 @@ namespace tempSQL
                 cnn.Execute($@"UPDATE rjo_person SET person_name ='{new_person_name}' WHERE id ={old_person_id}", new DynamicParameters());
             }
         }
-
+        internal static void NewProject(string project_name)
+        {
+            using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
+            {
+                cnn.Execute($@"INSERT INTO rjo_project (project_name) VALUES('{project_name}')", new DynamicParameters());
+            }
+        }
         internal static void UpdateProject(int old_person_id, string new_person_name)
         {
             using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))

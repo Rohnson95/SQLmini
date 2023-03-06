@@ -4,10 +4,11 @@
     {
         static void Main(string[] args)
         {
-            Menu();
+            //Menu();
+            menu.StartMenu();
         }
 
-        internal static void Menu()
+        /*internal static void Menu()
         {
             bool isActive = true;
             Console.WriteLine("1. Hour Report\n2. Users\n3. Projects\n4. New Person\n5. New Project\n6.Update Existing User\n7.Update Existing Project\n8.Exit");
@@ -48,7 +49,7 @@
                 }
             }
 
-        }
+        }*/
 
         internal static void ClockHours()
         {
@@ -85,41 +86,51 @@
                     Console.WriteLine("User Not found");
                 }
             }
-            Console.WriteLine("Done");
+            Console.WriteLine($"Done");
+            Console.ReadLine();
+            menu.StartMenu();
         }
 
         internal static void Users()
         {
+            Console.Clear();
             List<PersonModel> persons = DataAccess.Persons();
             Console.WriteLine("USERS");
             foreach (PersonModel person in persons)
             {
                 Console.WriteLine(person.person_name);
             }
+            Console.ReadLine();
+            menu.StartMenu();
         }
 
         internal static void Projects()
         {
+            Console.Clear();
             List<ProjectModel> projects = DataAccess.Projects();
             Console.WriteLine("PROJECTS");
             foreach (ProjectModel project in projects)
             {
                 Console.WriteLine(project.project_name);
             }
+            Console.ReadLine();
+            menu.StartMenu();
         }
 
         internal static void NewPerson()
         {
+            Console.Clear();
             Console.Write("Name: ");
             string? input = Console.ReadLine();
             DataAccess.NewPerson(input);
             Console.WriteLine("Name has been added!");
             Console.ReadLine();
-            Menu();
+            menu.StartMenu();
         }
 
         internal static void UpdatePerson()
         {
+            Console.Clear();
             List<PersonModel> persons = DataAccess.Persons();
             Console.WriteLine("What Name Would You Like To Change:");
             string? old_name = Console.ReadLine();
@@ -136,7 +147,7 @@
                     i = persons.Count;
                     Console.WriteLine("Done");
                     Console.ReadLine();
-                    Menu();
+                    menu.StartMenu();
                 }
                 else if (i == persons.Count - 1)
                 {
@@ -148,6 +159,7 @@
 
         internal static void UpdateProject()
         {
+            Console.Clear();
             List<ProjectModel> projects = DataAccess.Projects();
             Console.WriteLine("What Project Would You Like To Change:");
             string? old_project_name = Console.ReadLine();
@@ -164,7 +176,7 @@
                     i = projects.Count;
                     Console.WriteLine("Done");
                     Console.ReadLine();
-                    Menu();
+                    menu.StartMenu();
                 }
                 else if (i == projects.Count - 1)
                 {
@@ -172,6 +184,16 @@
                 }
             }
 
+        }
+        internal static void NewProject()
+        {
+            Console.Clear();
+            Console.Write("New Projectname: ");
+            string? input = Console.ReadLine();
+            DataAccess.NewProject(input);
+            Console.WriteLine("Project has been added!");
+            Console.ReadLine();
+            menu.StartMenu();
         }
     }
 }
