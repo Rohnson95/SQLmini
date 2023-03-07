@@ -90,7 +90,6 @@
             Console.ReadLine();
             menu.StartMenu();
         }
-
         internal static void Users()
         {
             Console.Clear();
@@ -103,7 +102,6 @@
             Console.ReadLine();
             menu.StartMenu();
         }
-
         internal static void Projects()
         {
             Console.Clear();
@@ -116,7 +114,6 @@
             Console.ReadLine();
             menu.StartMenu();
         }
-
         internal static void NewPerson()
         {
             Console.Clear();
@@ -127,7 +124,6 @@
             Console.ReadLine();
             menu.StartMenu();
         }
-
         internal static void UpdatePerson()
         {
             Console.Clear();
@@ -156,7 +152,6 @@
             }
 
         }
-
         internal static void UpdateProject()
         {
             Console.Clear();
@@ -194,6 +189,51 @@
             Console.WriteLine("Project has been added!");
             Console.ReadLine();
             menu.StartMenu();
+        }
+        internal static void ModifyTime()
+        {
+
+            List<PersonModel> users = DataAccess.Persons();
+            List<ProjectModel> projects = DataAccess.Projects();
+
+            string[] strings = users.Select(user =>
+            {
+                return user.person_name;
+            }).ToArray();
+
+            int index = Helper.MenuIndexer(strings, true);
+            int who = users[index].id;
+            List<ProjectPersonModel> userproject = DataAccess.ProjectPeople(who);
+            string[] userpArr = userproject.Select(userp =>
+            {
+                return userp.project_name + " " + userp.hours + " hours";
+
+            }).ToArray();
+
+
+            if (index == strings.Length) { menu.StartMenu(); }
+            else
+            {
+                //string proj = userproject[index].id;
+                //int projectIndex = Helper.MenuIndexer(projectArr, false);
+                string wohin = ($"{strings[index]}");
+
+                //Console.WriteLine(who);
+
+                //Console.WriteLine($"Person: {strings[index]} \nProject: {projArray[projectIndex]}");
+            }
+            int projectIndex = Helper.MenuIndexer(userpArr, true);
+            if (projectIndex == userpArr.Length)
+            {
+                menu.StartMenu();
+            }
+            Console.Write("Adjust Hours clocked to: ");
+            int input = int.Parse(Console.ReadLine());
+            int type = userproject[projectIndex].id;
+            DataAccess.UpdateHours(type, input);
+            Console.WriteLine($"Done,hours have been adjusted");
+            menu.StartMenu();
+
         }
     }
 }

@@ -63,5 +63,28 @@ namespace tempSQL
                 cnn.Execute($@"UPDATE rjo_project SET project_name ='{new_person_name}' WHERE id ={old_person_id}", new DynamicParameters());
             }
         }
+        internal static void UpdatePerson(int hourClocked, int input)
+        {
+            using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
+            {
+                cnn.Execute($@"UPDATE rjo_project_person SET hours ={hourClocked} WHERE id ={input}", new DynamicParameters());
+            }
+        }
+
+        internal static void UpdateHours(int id, int hours)
+        {
+            using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
+            {
+                cnn.Execute($@"UPDATE rjo_project_person SET hours ={hours} WHERE id ={id}", new DynamicParameters());
+            }
+        }
+        internal static List<ProjectPersonModel> ProjectPeople(int who)
+        {
+            using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<ProjectPersonModel>($"SELECT rjo_project_person.id, rjo_project_person.project_id, rjo_project_person.person_id,rjo_person.person_name,rjo_project_person.person_id,rjo_project.project_name,rjo_project_person.hours FROM rjo_project_person JOIN rjo_project ON rjo_project_person.project_id = rjo_project.id JOIN rjo_person ON rjo_project_person.person_id = rjo_person.id WHERE person_id = {who}", new DynamicParameters());
+                return output.ToList();
+            }
+        }
     }
 }
