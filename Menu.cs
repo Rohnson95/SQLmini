@@ -60,7 +60,7 @@
         }
         internal static void StartMenu()
         {
-            menu mainMenu = new menu(new string[] { "Hour Report", "Users", "Projects", "New Person", "New Project", "Update Existing User", "Update Existing Project", "Exit" });
+            menu mainMenu = new menu(new string[] { "Hour Report", "Users", "Projects", "New Person", "New Project", "Update Existing User", "Update Existing Project", "test", "Exit" });
 
             mainMenu.PrintMenu();
             bool showMenu = true;
@@ -92,10 +92,10 @@
                         Program.UpdateProject();
                         break;
                     case 7:
-                        Environment.Exit(0);
-
+                        Program.ModifyTime();
                         break;
                     case 8:
+                        Environment.Exit(0);
                         break;
                     default:
                         break;
