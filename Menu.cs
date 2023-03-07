@@ -60,7 +60,7 @@
         }
         internal static void StartMenu()
         {
-            menu mainMenu = new menu(new string[] { "Hour Report", "Users", "Projects", "New Person", "New Project", "Update Existing User", "Update Existing Project", "test", "Exit" });
+            menu mainMenu = new menu(new string[] { "Hour Report", "Users", "Projects", "New Person", "New Project", "Update Existing User", "Update Existing Project", "Adjust Existing hours Worked", "Exit" });
 
             mainMenu.PrintMenu();
             bool showMenu = true;

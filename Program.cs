@@ -7,50 +7,6 @@
             //Menu();
             menu.StartMenu();
         }
-
-        /*internal static void Menu()
-        {
-            bool isActive = true;
-            Console.WriteLine("1. Hour Report\n2. Users\n3. Projects\n4. New Person\n5. New Project\n6.Update Existing User\n7.Update Existing Project\n8.Exit");
-
-            while (isActive)
-            {
-                string? input = Console.ReadLine();
-                switch (input)
-                {
-                    case "1":
-                        ClockHours();
-                        break;
-
-                    case "2":
-                        Users();
-                        break;
-                    case "3":
-                        Projects();
-                        break;
-                    case "4":
-                        NewPerson();
-                        break;
-                    case "5":
-
-                        break;
-                    case "6":
-                        UpdatePerson();
-                        break;
-                    case "7":
-                        UpdateProject();
-                        break;
-                    case "8":
-                        Environment.Exit(0);
-                        isActive = false;
-                        break;
-
-
-                }
-            }
-
-        }*/
-
         internal static void ClockHours()
         {
             List<PersonModel> persons = DataAccess.Persons();
