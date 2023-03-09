@@ -11,7 +11,7 @@
             _menuItems = menuItems;
             _selectedIndex = 0;
         }
-
+        //Prints the menu in the console
         public void PrintMenu(string headerText = "")
         {
             Console.Clear();
@@ -33,6 +33,7 @@
             get => _selectedIndex;
             set => _selectedIndex = (value % _menuItems.Length + _menuItems.Length) % _menuItems.Length;
         }
+        //Allows the user to use arrow inputs and enter inputs when the menu is printed, This method is reusable
         public int UseMenu(string headerText = "")
         {
             ConsoleKey userInput;
@@ -58,6 +59,8 @@
                 PrintMenu(headerText);
             } while (true);
         }
+
+        //The startmenu, Allows you to navigate using printmenu, and gives access to other methods in the program
         internal static void StartMenu()
         {
             menu mainMenu = new menu(new string[] { "Hour Report", "Users", "Projects", "New Person", "New Project", "Update Existing User", "Update Existing Project", "Adjust Existing hours Worked", "Exit" });

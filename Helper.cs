@@ -2,7 +2,7 @@
 {
     internal class Helper
     {
-
+        // put in method to print different menu options based on the parameters, also prints a "go back" option if hasback = true
         internal static int MenuIndexer(string[] array, bool hasBack = false, string headerText = "")
         {
             if (hasBack)

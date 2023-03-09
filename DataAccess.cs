@@ -11,6 +11,7 @@ namespace tempSQL
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
 
+        //Selects users from rjo_person table in db
         public static List<PersonModel> Persons()
         {
             using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))
@@ -19,6 +20,8 @@ namespace tempSQL
                 return output.ToList();
             }
         }
+
+        //selects projects from rjo_project table in db
         public static List<ProjectModel> Projects()
         {
             using (IDbConnection cnn = new NpgsqlConnection(LoadConnectionString()))

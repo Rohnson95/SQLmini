@@ -7,6 +7,8 @@
             //Menu();
             menu.StartMenu();
         }
+
+        //Asks and checks for name in database, project in database and then asks for hours to input, this is then fed into the dataaccess file to allow for the database to update
         internal static void ClockHours()
         {
             List<PersonModel> persons = DataAccess.Persons();
@@ -46,6 +48,8 @@
             Console.ReadLine();
             menu.StartMenu();
         }
+
+        //Grants access and prints all users that exist in the database
         internal static void Users()
         {
             Console.Clear();
@@ -58,6 +62,7 @@
             Console.ReadLine();
             menu.StartMenu();
         }
+        //Grants access and prints all projects that exist in the database
         internal static void Projects()
         {
             Console.Clear();
@@ -70,6 +75,8 @@
             Console.ReadLine();
             menu.StartMenu();
         }
+
+        //Allows you to insert a new user to the database
         internal static void NewPerson()
         {
             Console.Clear();
@@ -80,6 +87,7 @@
             Console.ReadLine();
             menu.StartMenu();
         }
+        //updates users name from an existing one in the database
         internal static void UpdatePerson()
         {
             Console.Clear();
@@ -108,6 +116,7 @@
             }
 
         }
+        //updates project name from an existing one in the database
         internal static void UpdateProject()
         {
             Console.Clear();
@@ -136,6 +145,8 @@
             }
 
         }
+
+        //Allows you to insert a new project to the database
         internal static void NewProject()
         {
             Console.Clear();
@@ -146,6 +157,8 @@
             Console.ReadLine();
             menu.StartMenu();
         }
+
+        //Allows you to modify the hours you worked from example:(5hours => 8hours)
         internal static void ModifyTime()
         {
 
